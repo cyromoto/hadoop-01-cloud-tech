@@ -1,0 +1,13 @@
+gcloud dataproc clusters create cluster-5970 
+    --enable-component-gateway 
+    --bucket hadoop-data-bucket-01 
+    --region us-central1 
+    --zone us-central1-c 
+    -master-machine-type n1-standard-4 
+    --master-boot-disk-size 100 
+    --num-workers 2 
+    --worker-machine-type n1-standard-4 
+    --worker-boot-disk-size 30 
+    --image-version 2.0-debian10 
+    --max-idle 7200s 
+    --project hadoop-assignment-101
