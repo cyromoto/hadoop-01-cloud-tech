@@ -34,12 +34,12 @@ ALTER TABLE musicset RENAME TO table_to_dump;
 --removal of null values and the removal of unwanted character from the body 
 CREATE TABLE musicset AS
 SELECT regexp_replace(review_id,"[$&+,:;=?@#|<>.^*()%!-]"," "),
-    regexp_replace(product_id,"[$&+,:;=?@#|<>.^*()%!-]"," "),
+    regexp_replace(customer_id,"[$&+,:;=?@#|<>.^*()%!-]"," "),
     regexp_replace(review_body,"[$&+,:;=?@#|<>.^*()%!-]"," "),
     regexp_replace(review_headline,"[$&+,:;=?@#|<>.^*()%!-]"," "),
     regexp_replace(helpful_votes,"[$&+,:;=?@#|<>.^*()%!-]"," ")
 FROM table_to_dump 
-WHERE review_id IS NOT NULL 
+WHERE customer_id IS NOT NULL 
     and product_id IS NOT NULL 
     and review_body IS NOT NULL
     and review_headline IS NOT NULL
