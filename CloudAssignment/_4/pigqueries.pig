@@ -17,9 +17,9 @@ top_spammers = LIMIT spam_accounts 10;
 music_ham = FILTER musictable BY (UPPER(review_body) matches '.*(TELL|NA|WORK|HEY|ALREADY|RE|AMP|GIVE|ASK|SAY|RIGHT|GREAT|VE|SAID|MAKE|PHONE|TOMORROW|OH|WAN|WAT|REALLY|E|HI|WOULD|MEET|YES|GOOD|K|WELL|PLS|PICK|DEAR|TEXT|SURE|SOMETHING|WEEK|MORNING|NUMBER|LIFE|BUY|ANYTHING|THING|GON|AROUND|CARE|FEEL|LOL|MESSAGE|YEAH|KEEP).*');
 
 hammers = GROUP music_ham by customer_id;
-h_account_count = FOREACH spammers GENERATE group,COUNT(music_ham) AS Total;
+h_account_count = FOREACH hammers GENERATE group,COUNT(music_ham) AS Total;
 ham_accounts = ORDER h_account_count BY Total DESC;
-top_hammers = LIMIT spam_accounts 10;
+top_hammers = LIMIT ham_accounts 10;
 
 
 
